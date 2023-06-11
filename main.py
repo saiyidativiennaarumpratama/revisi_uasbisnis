@@ -12,6 +12,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 import joblib
 import time
+import altair as alt
 
 # from proses import preprocessing
 from proses.preprocessing import balance
@@ -27,7 +28,7 @@ st.write(
     ##### Kelompok 8 \n
     Rosita Dewi Lutfiyah          200411100002 \n
     Saiyidati Vienna Arum Pratama 200411100018 \n
-    Rizki Aji Santoso             20041110017"""
+    Mochammad Rizki Aji Santoso   200411100086"""
 )
 
 st.markdown("# Klasifikasi Data Garam Menggunakan Metode Naive Bayes")
@@ -70,7 +71,7 @@ elif (selected == 'Preprocessing'):
 
 
 elif selected == 'Modeling':
-    nb, knn, dt, svm = st.tabs(['Naive Bayes', 'K-Nearest Neighbor', 'Decision Tree', 'Support Vector Machine'])
+    nb, knn, dt, svm, grafik = st.tabs(['Naive Bayes', 'K-Nearest Neighbor', 'Decision Tree', 'Support Vector Machine','Grafik Akurasi'])
     with nb:
         st.markdown("# Algoritma Naive Bayes")
         # Menangkap Confusion Matrix dan akurasi yang dikembalikan
@@ -107,6 +108,26 @@ elif selected == 'Modeling':
         # st.write(cm_bestdt)
 
         st.success("Akurasi Support Vector Machine split dataset 90:10 adalah : " + str(ac_bestsvmlinear) + "%")
+    with grafik:
+         st.write ("##### Grafik Akurasi Semua Model") 
+         data = pd.DataFrame({
+            'Akurasi' : [ac_bestgnb, ac_bestknn, ac_bestdt, ac_bestsvmlinear],
+            'Model' : ['Naive Bayes', 'K-NN', 'Decission Tree', 'SVM'],
+            })
+
+         chart = (
+             alt.Chart(data)
+             .mark_bar()
+             .encode(
+                alt.X("Akurasi"),
+                alt.Y("Model"),
+                # alt.Color("Akurasi"),
+                alt.Color("Model", scale=alt.Scale(scheme='category10')),
+                alt.Tooltip(["Akurasi", "Model"]),
+            )
+            .interactive()
+            )
+         st.altair_chart(chart,use_container_width=True, theme="streamlit")
 ####################### Implementasi ############################
 
 
