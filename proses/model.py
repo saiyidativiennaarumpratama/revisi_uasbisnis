@@ -39,7 +39,7 @@ def knn():
     # st.write("Jumlah Y Test", y_test_knn.shape)
     # st.write()
 
-    best_knnclassifier = KNeighborsClassifier(n_neighbors=4)
+    best_knnclassifier = KNeighborsClassifier(n_neighbors=3)
     best_knnclassifier.fit(X_train_knn, y_train_knn)
     Y_pred_knn = best_knnclassifier.predict(X_test_knn)
 
