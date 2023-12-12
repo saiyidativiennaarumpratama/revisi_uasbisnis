@@ -26,7 +26,6 @@ st.markdown("# Klasifikasi Data Garam Menggunakan Metode Naive Bayes")
 
 st.markdown("# Pengolahan Data")
 selected = option_menu(
-    menu_title="Kecerdasan Bisnis",
     options=["Dataset", "Preprocessing", "Modeling", "Implementation"],
     orientation="horizontal",
 )
