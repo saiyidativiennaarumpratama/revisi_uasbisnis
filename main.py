@@ -22,11 +22,13 @@ from proses.model import knn
 from proses import implementasi
 
 
+
 st.markdown("# Klasifikasi Data Garam")
+st.text(""" Data yang digunakan untuk klasifikasi memiliki 7 fitur dan 1 target """)
 
 st.markdown("# Pengolahan Data")
 selected = option_menu(
-
+    menu_title="KLASIFIKASI DATA GARAM",
     options=["Dataset", "Preprocessing", "Modeling", "Implementation"],
     orientation="horizontal",
 )
