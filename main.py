@@ -22,15 +22,6 @@ from proses.model import knn
 from proses import implementasi
 
 
-st.markdown("# UAS KECERDASAN BISNIS")
-st.write(
-    """
-    ##### Kelompok 8 \n
-    Rosita Dewi Lutfiyah          200411100002 \n
-    Saiyidati Vienna Arum Pratama 200411100018 \n
-    Mochammad Rizki Aji Santoso   200411100086"""
-)
-
 st.markdown("# Klasifikasi Data Garam Menggunakan Metode Naive Bayes")
 st.text(""" Data yang digunakan untuk klasifikasi memiliki 7 fitur dan 1 target """)
 
