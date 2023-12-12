@@ -60,7 +60,7 @@ elif (selected == 'Preprocessing'):
 
 
 elif selected == 'Modeling':
-    nb, knn, dt, svm, grafik = st.tabs(['Naive Bayes', 'K-Nearest Neighbor', 'Decision Tree', 'Support Vector Machine','Grafik Akurasi'])
+    nb = st.tabs(['Naive Bayes'])
     with nb:
         st.markdown("# Algoritma Naive Bayes")
         # Menangkap Confusion Matrix dan akurasi yang dikembalikan
