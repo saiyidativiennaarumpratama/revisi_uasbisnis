@@ -71,37 +71,37 @@ elif selected == 'Modeling':
 
         st.success("Akurasi Naive Bayes Gaussian dengan split dataset 90:10 adalah : " + str(ac_bestgnb) + "%")
     
-    with knn:
-        st.markdown("# Algoritma K-Nearest Neighbor")
-        cm_bestknn, ac_bestknn = model.knn()
+    # with knn:
+    #     st.markdown("# Algoritma K-Nearest Neighbor")
+    #     cm_bestknn, ac_bestknn = model.knn()
 
-        # st.write("Confusion Matrix:")
-        # st.write(cm_bestknn)
+    #     # st.write("Confusion Matrix:")
+    #     # st.write(cm_bestknn)
 
-        st.success("Akurasi K-Nearest Neighbor dengan K : 3 split dataset 90:10 adalah : " + str(ac_bestknn) + "%")
+    #     st.success("Akurasi K-Nearest Neighbor dengan K : 3 split dataset 90:10 adalah : " + str(ac_bestknn) + "%")
     
-    with dt:
-        st.markdown("# Algoritma Decision Tree")
-        cm_bestdt, ac_bestdt = model.dt()
+    # with dt:
+    #     st.markdown("# Algoritma Decision Tree")
+    #     cm_bestdt, ac_bestdt = model.dt()
 
-        # st.write("Confusion Matrix:")
-        # st.write(cm_bestdt)
+    #     # st.write("Confusion Matrix:")
+    #     # st.write(cm_bestdt)
 
-        st.success("Akurasi Decision Tree split dataset 90:10 adalah : " + str(ac_bestdt) + "%")
+    #     st.success("Akurasi Decision Tree split dataset 90:10 adalah : " + str(ac_bestdt) + "%")
 
-    with svm:
-        st.markdown("# Algoritma Support Vector Machine")
-        cm_bestsvmlinear, ac_bestsvmlinear = model.svm()
+    # with svm:
+    #     st.markdown("# Algoritma Support Vector Machine")
+    #     cm_bestsvmlinear, ac_bestsvmlinear = model.svm()
 
-        # st.write("Confusion Matrix:")
-        # st.write(cm_bestdt)
+    #     # st.write("Confusion Matrix:")
+    #     # st.write(cm_bestdt)
 
-        st.success("Akurasi Support Vector Machine split dataset 90:10 adalah : " + str(ac_bestsvmlinear) + "%")
+        # st.success("Akurasi Support Vector Machine split dataset 90:10 adalah : " + str(ac_bestsvmlinear) + "%")
     with grafik:
          st.write ("##### Grafik Akurasi Semua Model") 
          data = pd.DataFrame({
-            'Akurasi' : [ac_bestgnb, ac_bestknn, ac_bestdt, ac_bestsvmlinear],
-            'Model' : ['Naive Bayes', 'K-NN', 'Decission Tree', 'SVM'],
+            'Akurasi' : [ac_bestgnb],
+            'Model' : ['Naive Bayes'],
             })
 
          chart = (
@@ -136,21 +136,21 @@ elif selected == 'Implementation':
     # Memuat model
     # scaler = joblib.load('model/df_scaled(norm).save')
     # data_input_scaled = scaler.transform(data_input)
-    nb, knn, dt, svm = st.tabs(['Naive Bayes', 'K-Nearest Neighbor', 'Decision Tree', 'Support Vector Machine'])
+    nb = st.tabs(['Naive Bayes'])
     with nb:
         grade_prediction_nb = implementasi.nb(data_input)
         # st.write("Hasil Prediksi Naive Bayes : ", grade_prediction_nb)
-    with knn:
-        grade_prediction_knn = implementasi.knn(data_input)
-        # st.write("Hasil Prediksi K-Nearest Neighbor : ", grade_prediction_knn)
-    with dt:
-        grade_prediction_dt = implementasi.dt(data_input)
-        # st.write("Hasil Prediksi Decision Tree: ", grade_prediction_dt)
-    with svm:
-        grade_prediction_svm = implementasi.svm(data_input)
-        # st.write("Hasil Prediksi Support Vector Machine: ", grade_prediction_svm)
-        # implementasi.nb(data_input)
-        # st.write("Hasil Prediksi")
+    # with knn:
+    #     grade_prediction_knn = implementasi.knn(data_input)
+    #     # st.write("Hasil Prediksi K-Nearest Neighbor : ", grade_prediction_knn)
+    # with dt:
+    #     grade_prediction_dt = implementasi.dt(data_input)
+    #     # st.write("Hasil Prediksi Decision Tree: ", grade_prediction_dt)
+    # # with svm:
+    #     grade_prediction_svm = implementasi.svm(data_input)
+    #     # st.write("Hasil Prediksi Support Vector Machine: ", grade_prediction_svm)
+    #     # implementasi.nb(data_input)
+    #     # st.write("Hasil Prediksi")
     # button = st.button('Prediksi')
     # if button:
     #     grade_prediction = implementasi.nb(data_input)
