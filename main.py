@@ -22,10 +22,21 @@ from proses.model import knn
 from proses import implementasi
 
 
-st.markdown("# Klasifikasi Data Garam")
+st.markdown("# UAS KECERDASAN BISNIS")
+st.write(
+    """
+    ##### Kelompok 8 \n
+    Rosita Dewi Lutfiyah          200411100002 \n
+    Saiyidati Vienna Arum Pratama 200411100018 \n
+    Mochammad Rizki Aji Santoso   200411100086"""
+)
+
+st.markdown("# Klasifikasi Data Garam Menggunakan Metode Naive Bayes")
+st.text(""" Data yang digunakan untuk klasifikasi memiliki 7 fitur dan 1 target """)
 
 st.markdown("# Pengolahan Data")
 selected = option_menu(
+    menu_title="Kecerdasan Bisnis",
     options=["Dataset", "Preprocessing", "Modeling", "Implementation"],
     orientation="horizontal",
 )
@@ -60,7 +71,7 @@ elif (selected == 'Preprocessing'):
 
 
 elif selected == 'Modeling':
-    nb = st.tabs(['Naive Bayes'])
+    nb, knn, dt, svm, grafik = st.tabs(['Naive Bayes', 'K-Nearest Neighbor', 'Decision Tree', 'Support Vector Machine','Grafik Akurasi'])
     with nb:
         st.markdown("# Algoritma Naive Bayes")
         # Menangkap Confusion Matrix dan akurasi yang dikembalikan
@@ -71,37 +82,37 @@ elif selected == 'Modeling':
 
         st.success("Akurasi Naive Bayes Gaussian dengan split dataset 90:10 adalah : " + str(ac_bestgnb) + "%")
     
-    # with knn:
-    #     st.markdown("# Algoritma K-Nearest Neighbor")
-    #     cm_bestknn, ac_bestknn = model.knn()
+    with knn:
+        st.markdown("# Algoritma K-Nearest Neighbor")
+        cm_bestknn, ac_bestknn = model.knn()
 
-    #     # st.write("Confusion Matrix:")
-    #     # st.write(cm_bestknn)
+        # st.write("Confusion Matrix:")
+        # st.write(cm_bestknn)
 
-    #     st.success("Akurasi K-Nearest Neighbor dengan K : 3 split dataset 90:10 adalah : " + str(ac_bestknn) + "%")
+        st.success("Akurasi K-Nearest Neighbor dengan K : 3 split dataset 90:10 adalah : " + str(ac_bestknn) + "%")
     
-    # with dt:
-    #     st.markdown("# Algoritma Decision Tree")
-    #     cm_bestdt, ac_bestdt = model.dt()
+    with dt:
+        st.markdown("# Algoritma Decision Tree")
+        cm_bestdt, ac_bestdt = model.dt()
 
-    #     # st.write("Confusion Matrix:")
-    #     # st.write(cm_bestdt)
+        # st.write("Confusion Matrix:")
+        # st.write(cm_bestdt)
 
-    #     st.success("Akurasi Decision Tree split dataset 90:10 adalah : " + str(ac_bestdt) + "%")
+        st.success("Akurasi Decision Tree split dataset 90:10 adalah : " + str(ac_bestdt) + "%")
 
-    # with svm:
-    #     st.markdown("# Algoritma Support Vector Machine")
-    #     cm_bestsvmlinear, ac_bestsvmlinear = model.svm()
+    with svm:
+        st.markdown("# Algoritma Support Vector Machine")
+        cm_bestsvmlinear, ac_bestsvmlinear = model.svm()
 
-    #     # st.write("Confusion Matrix:")
-    #     # st.write(cm_bestdt)
+        # st.write("Confusion Matrix:")
+        # st.write(cm_bestdt)
 
-        # st.success("Akurasi Support Vector Machine split dataset 90:10 adalah : " + str(ac_bestsvmlinear) + "%")
+        st.success("Akurasi Support Vector Machine split dataset 90:10 adalah : " + str(ac_bestsvmlinear) + "%")
     with grafik:
          st.write ("##### Grafik Akurasi Semua Model") 
          data = pd.DataFrame({
-            'Akurasi' : [ac_bestgnb],
-            'Model' : ['Naive Bayes'],
+            'Akurasi' : [ac_bestgnb, ac_bestknn, ac_bestdt, ac_bestsvmlinear],
+            'Model' : ['Naive Bayes', 'K-NN', 'Decission Tree', 'SVM'],
             })
 
          chart = (
@@ -136,21 +147,21 @@ elif selected == 'Implementation':
     # Memuat model
     # scaler = joblib.load('model/df_scaled(norm).save')
     # data_input_scaled = scaler.transform(data_input)
-    nb = st.tabs(['Naive Bayes'])
+    nb, knn, dt, svm = st.tabs(['Naive Bayes', 'K-Nearest Neighbor', 'Decision Tree', 'Support Vector Machine'])
     with nb:
         grade_prediction_nb = implementasi.nb(data_input)
         # st.write("Hasil Prediksi Naive Bayes : ", grade_prediction_nb)
-    # with knn:
-    #     grade_prediction_knn = implementasi.knn(data_input)
-    #     # st.write("Hasil Prediksi K-Nearest Neighbor : ", grade_prediction_knn)
-    # with dt:
-    #     grade_prediction_dt = implementasi.dt(data_input)
-    #     # st.write("Hasil Prediksi Decision Tree: ", grade_prediction_dt)
-    # # with svm:
-    #     grade_prediction_svm = implementasi.svm(data_input)
-    #     # st.write("Hasil Prediksi Support Vector Machine: ", grade_prediction_svm)
-    #     # implementasi.nb(data_input)
-    #     # st.write("Hasil Prediksi")
+    with knn:
+        grade_prediction_knn = implementasi.knn(data_input)
+        # st.write("Hasil Prediksi K-Nearest Neighbor : ", grade_prediction_knn)
+    with dt:
+        grade_prediction_dt = implementasi.dt(data_input)
+        # st.write("Hasil Prediksi Decision Tree: ", grade_prediction_dt)
+    with svm:
+        grade_prediction_svm = implementasi.svm(data_input)
+        # st.write("Hasil Prediksi Support Vector Machine: ", grade_prediction_svm)
+        # implementasi.nb(data_input)
+        # st.write("Hasil Prediksi")
     # button = st.button('Prediksi')
     # if button:
     #     grade_prediction = implementasi.nb(data_input)
