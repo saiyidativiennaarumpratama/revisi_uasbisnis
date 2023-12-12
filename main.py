@@ -23,7 +23,6 @@ from proses import implementasi
 
 
 st.markdown("# Klasifikasi Data Garam Menggunakan Metode Naive Bayes")
-st.text(""" Data yang digunakan untuk klasifikasi memiliki 7 fitur dan 1 target """)
 
 st.markdown("# Pengolahan Data")
 selected = option_menu(
