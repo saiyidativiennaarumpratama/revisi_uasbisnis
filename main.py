@@ -22,11 +22,11 @@ from proses.model import knn
 from proses import implementasi
 
 
-st.markdown("# Klasifikasi Data Garam Menggunakan Metode Naive Bayes")
-st.text(""" Data yang digunakan untuk klasifikasi memiliki 7 fitur dan 1 target """)
+st.markdown("# Klasifikasi Data Garam")
 
 st.markdown("# Pengolahan Data")
 selected = option_menu(
+
     options=["Dataset", "Preprocessing", "Modeling", "Implementation"],
     orientation="horizontal",
 )
